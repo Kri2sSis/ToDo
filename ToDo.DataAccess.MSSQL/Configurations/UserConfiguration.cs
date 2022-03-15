@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ToDo.DataAccesse.MSSQL.Entities;
+using ToDo.DataAccess.MSSQL.Entities;
 
-namespace ToDo.DataAccesse.MSSQL.Configurations
+namespace ToDo.DataAccess.MSSQL.Configurations
 {
-    public class UserConfiguration : IEntityTypeConfiguration<User>
+    public class UserConfiguration : IEntityTypeConfiguration<Entities.User>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<Entities.User> builder)
         {
             builder.HasKey(x => x.Id);
 

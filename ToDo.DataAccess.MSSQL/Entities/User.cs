@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ToDo.DataAccesse.MSSQL.Entities
+namespace ToDo.DataAccess.MSSQL.Entities
 {
     public class User
     {
@@ -14,7 +14,7 @@ namespace ToDo.DataAccesse.MSSQL.Entities
 
         public string Email { get; set; }
 
-        public ToDoBoard[] ToDoBoard { get; set; }
+        public ICollection<ToDoBoard> ToDoBoard { get; set; }
 
     }
 }

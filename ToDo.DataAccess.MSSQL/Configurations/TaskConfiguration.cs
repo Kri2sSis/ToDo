@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace ToDo.DataAccesse.MSSQL.Configurations
+namespace ToDo.DataAccess.MSSQL.Configurations
 {
     public class TaskConfiguration : IEntityTypeConfiguration<Entities.Task>
     {
@@ -10,7 +10,6 @@ namespace ToDo.DataAccesse.MSSQL.Configurations
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Title).HasMaxLength(100).IsRequired();
-            builder.Property(x => x.Description).HasMaxLength(1000).IsRequired();
             builder.Property(x => x.Description).HasMaxLength(1000).IsRequired();
 
 

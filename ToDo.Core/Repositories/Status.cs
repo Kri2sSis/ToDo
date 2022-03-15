@@ -1,4 +1,4 @@
-﻿namespace ToDo.DataAccesse.MSSQL.Entities
+﻿namespace ToDo.Core.Repositories
 {
     public enum Status
     {

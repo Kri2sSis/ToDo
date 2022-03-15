@@ -1,9 +1,25 @@
 using Microsoft.EntityFrameworkCore;
-using ToDo.DataAccesse.MSSQL;
+using ToDo.DataAccess.MSSQL;
+using Microsoft.Extensions.DependencyInjection;
+using ToDo.Api;
+using ToDo.Core.Repositories;
+using ToDo.DataAccess.MSSQL.Repositories;
+using ToDo.Core.Services;
+using ToDo.BusinessLogic;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddAutoMapper(cfg =>
+{
+    cfg.AddProfile<ContractMapperProfile>();
+    cfg.AddProfile<EntityMapperProfile>();
+
+});
+
+builder.Services.AddScoped<IUserRepositorie, UserRepositorie>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 
 builder.Services.AddDbContext<ToDoDbContext>(options =>

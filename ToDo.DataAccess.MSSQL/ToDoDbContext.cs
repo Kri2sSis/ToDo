@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ToDo.DataAccesse.MSSQL.Configurations;
-using ToDo.DataAccesse.MSSQL.Entities;
+using ToDo.DataAccess.MSSQL.Configurations;
+using ToDo.DataAccess.MSSQL.Entities;
 
-namespace ToDo.DataAccesse.MSSQL
+namespace ToDo.DataAccess.MSSQL
 {
     public class ToDoDbContext : DbContext
     {

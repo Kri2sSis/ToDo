@@ -3,17 +3,19 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ToDo.DataAccesse.MSSQL;
+using ToDo.DataAccess.MSSQL;
 
 #nullable disable
 
-namespace ToDo.DataAccesse.MSSQL.Migrations
+namespace ToDo.DataAccess.MSSQL.Migrations
 {
     [DbContext(typeof(ToDoDbContext))]
-    partial class ToDoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220315192531_Init1")]
+    partial class Init1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +24,7 @@ namespace ToDo.DataAccesse.MSSQL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("ToDo.DataAccesse.MSSQL.Entities.Task", b =>
+            modelBuilder.Entity("ToDo.DataAccess.MSSQL.Entities.Task", b =>
                 {
                     b.Property<int>("Id")
                         .HasColumnType("int");
@@ -48,7 +50,7 @@ namespace ToDo.DataAccesse.MSSQL.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("ToDo.DataAccesse.MSSQL.Entities.ToDoBoard", b =>
+            modelBuilder.Entity("ToDo.DataAccess.MSSQL.Entities.ToDoBoard", b =>
                 {
                     b.Property<int>("Id")
                         .HasColumnType("int");
@@ -66,7 +68,7 @@ namespace ToDo.DataAccesse.MSSQL.Migrations
                     b.ToTable("Boards");
                 });
 
-            modelBuilder.Entity("ToDo.DataAccesse.MSSQL.Entities.User", b =>
+            modelBuilder.Entity("ToDo.DataAccess.MSSQL.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -89,9 +91,9 @@ namespace ToDo.DataAccesse.MSSQL.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("ToDo.DataAccesse.MSSQL.Entities.Task", b =>
+            modelBuilder.Entity("ToDo.DataAccess.MSSQL.Entities.Task", b =>
                 {
-                    b.HasOne("ToDo.DataAccesse.MSSQL.Entities.ToDoBoard", "ToDoBoard")
+                    b.HasOne("ToDo.DataAccess.MSSQL.Entities.ToDoBoard", "ToDoBoard")
                         .WithMany("Tasks")
                         .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.NoAction);
@@ -99,9 +101,9 @@ namespace ToDo.DataAccesse.MSSQL.Migrations
                     b.Navigation("ToDoBoard");
                 });
 
-            modelBuilder.Entity("ToDo.DataAccesse.MSSQL.Entities.ToDoBoard", b =>
+            modelBuilder.Entity("ToDo.DataAccess.MSSQL.Entities.ToDoBoard", b =>
                 {
-                    b.HasOne("ToDo.DataAccesse.MSSQL.Entities.User", "User")
+                    b.HasOne("ToDo.DataAccess.MSSQL.Entities.User", "User")
                         .WithMany("ToDoBoard")
                         .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -110,12 +112,12 @@ namespace ToDo.DataAccesse.MSSQL.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ToDo.DataAccesse.MSSQL.Entities.ToDoBoard", b =>
+            modelBuilder.Entity("ToDo.DataAccess.MSSQL.Entities.ToDoBoard", b =>
                 {
                     b.Navigation("Tasks");
                 });
 
-            modelBuilder.Entity("ToDo.DataAccesse.MSSQL.Entities.User", b =>
+            modelBuilder.Entity("ToDo.DataAccess.MSSQL.Entities.User", b =>
                 {
                     b.Navigation("ToDoBoard");
                 });

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ToDo.DataAccesse.MSSQL.Entities;
+using ToDo.DataAccess.MSSQL.Entities;
 
-namespace ToDo.DataAccesse.MSSQL.Configurations
+namespace ToDo.DataAccess.MSSQL.Configurations
 {
     public class ToDoBoardConfiguration : IEntityTypeConfiguration<ToDoBoard>
     {

@@ -1,4 +1,4 @@
-﻿namespace ToDo.DataAccesse.MSSQL.Entities
+﻿namespace ToDo.DataAccess.MSSQL.Entities
 {
     public class Task
     {
