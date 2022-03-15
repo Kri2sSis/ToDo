@@ -8,10 +8,8 @@
 
         public Status Status { get; set; }
 
-        public Objective[] Objective { get; set; }
+        public Task[]? Tasks { get; set; }
 
-
-        public int UserId { get; set; }
 
         public User User { get; set; }
 

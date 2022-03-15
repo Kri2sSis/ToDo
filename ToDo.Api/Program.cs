@@ -1,6 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using ToDo.DataAccesse.MSSQL;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+
+builder.Services.AddDbContext<ToDoDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ToDo"));
+});
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

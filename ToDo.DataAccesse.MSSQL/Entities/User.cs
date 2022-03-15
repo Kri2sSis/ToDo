@@ -16,8 +16,5 @@ namespace ToDo.DataAccesse.MSSQL.Entities
 
         public ToDoBoard[] ToDoBoard { get; set; }
 
-
-        
-
     }
 }

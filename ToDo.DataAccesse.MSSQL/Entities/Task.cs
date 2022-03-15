@@ -1,6 +1,6 @@
 ﻿namespace ToDo.DataAccesse.MSSQL.Entities
 {
-    public class Objective
+    public class Task
     {
         public int Id { get; set; }
 
@@ -13,7 +13,6 @@
         public DateTime ExpirationDate { get; set; }
 
 
-        public int ToDoBoardId { get; set; }
         public ToDoBoard ToDoBoard { get; set; }
 
 
