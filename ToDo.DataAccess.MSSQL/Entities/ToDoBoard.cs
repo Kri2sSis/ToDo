@@ -11,6 +11,8 @@
         public Task[]? Tasks { get; set; }
 
 
+        public int UserId { get; set; }
+
         public User User { get; set; }
 
     }

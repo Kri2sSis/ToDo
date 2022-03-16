@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ToDo.Core.Repositories
 {
-    public interface IUserRepositorie
+    public interface IUserRepositoriy
     {
         Task<int> Add(User user);
 

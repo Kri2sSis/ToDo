@@ -5,9 +5,9 @@ namespace ToDo.BusinessLogic
 {
     public class UserService : IUserService
     {
-        private readonly IUserRepositorie _userRepositorie;
+        private readonly IUserRepositoriy _userRepositorie;
 
-        public UserService(IUserRepositorie userRepositorie)
+        public UserService(IUserRepositoriy userRepositorie)
         {
             _userRepositorie = userRepositorie;
         }
@@ -25,15 +25,21 @@ namespace ToDo.BusinessLogic
 
         }
 
+        public async Task<User> Get(int id)
+        {
+            if (id == default(int))
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+            return await _userRepositorie.Get(id);
+            
+        }
+
         public System.Threading.Tasks.Task Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<User> Get(int id)
-        {
-            throw new NotImplementedException();
-        }
 
 
         private ICollection<ToDoBoard> CreateToDoBoards()

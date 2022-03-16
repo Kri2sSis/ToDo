@@ -18,7 +18,7 @@ builder.Services.AddAutoMapper(cfg =>
 
 });
 
-builder.Services.AddScoped<IUserRepositorie, UserRepositorie>();
+builder.Services.AddScoped<IUserRepositoriy, UserRepositoriy>();
 builder.Services.AddScoped<IUserService, UserService>();
 
 

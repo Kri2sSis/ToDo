@@ -12,8 +12,11 @@ namespace ToDo.DataAccess.MSSQL
     {
         public EntityMapperProfile()
         {
-            CreateMap<User, Core.Repositories.User>().ForMember(x => x.ToDoBoards, opt => opt.MapFrom(x => x.ToDoBoard)).ReverseMap();
-            CreateMap<ToDoBoard, Core.Repositories.ToDoBoard>().ReverseMap();
+            CreateMap<User, Core.Repositories.User>()
+                .ForMember(x => x.ToDoBoards, opt => opt.MapFrom(x => x.ToDoBoard))
+                .ReverseMap();
+            CreateMap<ToDoBoard, Core.Repositories.ToDoBoard>()
+                .ReverseMap();
         }
     }
 }

@@ -15,9 +15,7 @@ namespace ToDo.DataAccess.MSSQL.Configurations
 
             builder.HasOne(x => x.ToDoBoard)
                     .WithMany(x => x.Tasks)
-                    .OnDelete(DeleteBehavior.NoAction)
-                    .HasPrincipalKey(x => x.Id)
-                    .HasForeignKey(x => x.Id);
+                    .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

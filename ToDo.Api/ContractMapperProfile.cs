@@ -7,7 +7,11 @@ namespace ToDo.Api
     {
         public ContractMapperProfile()
         {
-            CreateMap<User, Core.Repositories.User>().ReverseMap();
+            CreateMap<UserForCreate, Core.Repositories.User>().ReverseMap();
+            CreateMap<UserForGet, Core.Repositories.User>()
+                .ForMember(x => x.ToDoBoards, opt => opt.MapFrom(x => x.ToDoBoards))
+                .ReverseMap();
+            CreateMap<ToDoBoard, Core.Repositories.ToDoBoard>().ReverseMap();
         }
 
     }

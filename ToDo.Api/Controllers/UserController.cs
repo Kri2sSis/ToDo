@@ -19,12 +19,20 @@ namespace ToDo.Api.Controllers
         }
 
         [HttpPost("/creat")]
-        public async Task<IActionResult> Create([FromBody]User user)
+        public async Task<IActionResult> Create([FromBody] UserForCreate user)
         {
-            var userCore = _mapper.Map<User, Core.Repositories.User>(user);
+            var userCore = _mapper.Map<UserForCreate, Core.Repositories.User>(user);
             int id = await _userService.Create(userCore);
 
             return Ok(id);
+        }
+
+        [HttpGet("/id/{id:int}")]
+        public async Task<IActionResult> Get ([FromRoute] int id)
+        {
+            var userCore = await _userService.Get(id);
+            var userContract = _mapper.Map<Core.Repositories.User, UserForGet>(userCore);
+            return Ok(userContract);
         }
 
     }

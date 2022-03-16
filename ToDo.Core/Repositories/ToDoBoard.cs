@@ -15,5 +15,7 @@ namespace ToDo.Core.Repositories
         public Status Status { get; set; }
 
         public Task[]? Tasks { get; set; }
+
+        public User User { get; set; }
     }
 }

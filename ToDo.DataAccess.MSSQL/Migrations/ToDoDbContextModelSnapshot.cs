@@ -25,7 +25,10 @@ namespace ToDo.DataAccess.MSSQL.Migrations
             modelBuilder.Entity("ToDo.DataAccess.MSSQL.Entities.Task", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -43,7 +46,12 @@ namespace ToDo.DataAccess.MSSQL.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<int>("ToDoBoardId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ToDoBoardId");
 
                     b.ToTable("Tasks");
                 });
@@ -51,7 +59,10 @@ namespace ToDo.DataAccess.MSSQL.Migrations
             modelBuilder.Entity("ToDo.DataAccess.MSSQL.Entities.ToDoBoard", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -61,7 +72,12 @@ namespace ToDo.DataAccess.MSSQL.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Boards");
                 });
@@ -93,7 +109,7 @@ namespace ToDo.DataAccess.MSSQL.Migrations
                 {
                     b.HasOne("ToDo.DataAccess.MSSQL.Entities.ToDoBoard", "ToDoBoard")
                         .WithMany("Tasks")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("ToDoBoardId")
                         .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("ToDoBoard");
@@ -103,7 +119,7 @@ namespace ToDo.DataAccess.MSSQL.Migrations
                 {
                     b.HasOne("ToDo.DataAccess.MSSQL.Entities.User", "User")
                         .WithMany("ToDoBoard")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
