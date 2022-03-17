@@ -35,9 +35,13 @@ namespace ToDo.BusinessLogic
             
         }
 
-        public System.Threading.Tasks.Task Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            if (id == default(int))
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+            return await _userRepositorie.Delete(id);
         }
 
 

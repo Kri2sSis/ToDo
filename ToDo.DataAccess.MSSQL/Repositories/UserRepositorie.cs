@@ -43,21 +43,21 @@ namespace ToDo.DataAccess.MSSQL.Repositories
             return userCore;
         }
 
-        public Task<int> AddTask(Core.Repositories.Task task)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
-        }
+            var userEntity = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+            if (userEntity == null)
+            {
+                return false;
+            }
 
-        public Task<bool> DeleteTask(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        
-
-        public Task<bool> UpdateTask(Core.Repositories.Task task)
-        {
-            throw new NotImplementedException();
+            await _context.Entry(userEntity)
+                    .Collection(x => x.ToDoBoard)
+                    .LoadAsync();
+            _context.Boards.RemoveRange(userEntity.ToDoBoard);
+            _context.Users.Remove(userEntity);
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

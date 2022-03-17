@@ -13,6 +13,6 @@ namespace ToDo.Core.Services
 
         Task<User> Get(int id);
 
-        System.Threading.Tasks.Task Delete(int id);
+        Task<bool> Delete(int id);
     }
 }

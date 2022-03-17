@@ -35,5 +35,11 @@ namespace ToDo.Api.Controllers
             return Ok(userContract);
         }
 
+        [HttpDelete("/delete/id/{id:int}")]
+        public async Task<IActionResult> Delete([FromRoute] int id)
+        {
+            return Ok(await _userService.Delete(id));
+        }
+
     }
 }
